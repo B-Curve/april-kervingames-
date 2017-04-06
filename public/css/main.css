@@ -1,0 +1,193 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lora', serif;
+}
+
+a, a:visited{
+  text-decoration: none;
+  color: blue;
+}
+
+li > a:visited{
+  color: white;
+}
+
+.site-header{
+  background: #733;
+  width: 100vw;
+  height: 8vh;
+  position: fixed;
+  top: 0;
+}
+
+.site-header h1{
+  margin: 0;
+  line-height: 8vh;
+  float: left;
+  margin-left: 2vw;
+}
+
+.site-header img{
+  width: 12vw;
+  height: 90%;
+  float: right;
+  margin-right: 2vw;
+  margin-top: .5%;
+}
+
+.site-navigator{
+  display: none;
+  position: fixed;
+  top: 8vh;
+  width: 100vw;
+  height: 92vh;
+  background: #733;
+  border-top: 1px solid white;
+  text-align: center;
+  left: 100vw;
+}
+
+.site-navigator ul{
+  padding: 0;
+}
+
+.site-navigator li{
+  display: block;
+  width: 50%;
+  padding: 6%;
+  font-size: 6vw;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  float: right;
+  color: white;
+}
+
+.site-navigator li:nth-of-type(5){
+  color: orange;
+}
+
+.site-navigator h1{
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 10vh;
+  color: white;
+}
+
+.site-navigator h2{
+  float: left;
+  position: absolute;
+  transform: rotate(270deg);
+  left: -20vw;
+  top: 12vh;
+  font-size: 9vw;
+  color: white;
+}
+
+.site-body{
+  padding: 8vh 0;
+}
+
+.account-form{
+  width: 90vw;
+  height: inherit;
+  background: #ccc;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+.account-form h1{
+  line-height: 5vh;
+  border: 1px solid black;
+  margin-bottom: 0;
+}
+
+.active{
+  color: yellow;
+}
+
+.active:visited{
+  color: yellow;
+}
+
+.site-footer{
+  width: 100vw;
+  background: #733;
+  height: inherit;
+  padding: 2vh 0;
+  text-align: center;
+  bottom: 0;
+}
+
+.site-footer img{
+  width: 10vw;
+  height: 6vh;
+  padding: 0 5vw;
+}
+
+.site-footer ul{
+  list-style: none;
+  padding: 0;
+}
+
+.site-footer li{
+  display: inline-block;
+  width: 30%;
+  color: white;
+  margin: 0 5%;
+}
+
+.site-footer li:nth-of-type(3){
+  padding-top: 2vh;
+  width: 100%;
+  margin: 0;
+}
+
+/************************
+  SIGN IN & SIGN UP CSS
+************************/
+
+.form-creds{
+  padding-bottom: 2vh;
+  border: 1px solid black;
+}
+
+.form-creds h2{
+  margin: 0;
+  font-size: 4.5vw;
+  color: red;
+}
+
+.form-creds input{
+  margin: 5% auto;
+}
+
+/************************
+  WELCOME TO WEBSITE CSS
+************************/
+
+.welcome-website{
+  width: 90vw;
+  height: inherit;
+  margin: 5% auto;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.welcome-website h1{
+  background: #ccc;
+  margin: 0;
+  border-bottom: 1px solid black;
+}
+
+.site-frame{
+  background: #eee;
+  padding: 5% 0;
+}
+
+.site-frame h2{
+  font-size: 4vw;
+  width: 90%;
+  margin: 0 auto;
+}
