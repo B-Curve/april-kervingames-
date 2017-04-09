@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser());
+var session = require('client-sessions');
 var mysql = require('mysql');
 var conn = mysql.createConnection({
   host: 'localhost',
@@ -11,6 +12,13 @@ var conn = mysql.createConnection({
   multipleStatements: true
 });
 conn.connect();
+
+app.use(session({
+  cookieName: 'session',
+  secret: 'session_id:19974402289;brandonkervin',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000
+}));
 
 app.use('/static', express.static(__dirname + '/public'));
 
@@ -31,6 +39,22 @@ app.post('/findIfExists', (req, res) => {
     }else{
       res.send('dne');
     }
+  });
+});
+
+app.post('/submitNewUser', (req, res) => {
+  var accounts = {
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email
+  };
+  var query = 'INSERT INTO accounts SET ?';
+  conn.query(query, accounts, (err) => {
+    if(err) throw err;
+    req.session.username = req.body.username;
+    req.session.password = req.body.password;
+    req.session.email = req.body.email;
+    res.send('true');
   });
 });
 

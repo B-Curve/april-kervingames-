@@ -25,12 +25,20 @@ export default class SiteLayout extends React.Component{
         left: '0'
       })
       .toggle();
+      setTimeout(() => {
+        $('.site-header img').css({display : 'none'});
+        $('.site-header img:nth-of-type(2)').css({display : 'inherit'});
+      },25);
       this.setState({isDropped : true});
     }else{
       $('.site-navigator').animate({
         left: '100vw'
       })
       .toggle();
+      setTimeout(() => {
+        $('.site-header img').css({display : 'inherit'});
+        $('.site-header img:nth-of-type(2)').css({display : 'none'});
+      },25);
       this.setState({isDropped : false});
     }
   }
@@ -62,9 +70,11 @@ export default class SiteLayout extends React.Component{
   render(){
     return(
       <div>
+        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" />
         <header className="site-header">
           <h1>KervinGames</h1>
           <img src="/static/images/menu.png" alt="menu" onClick={this.dropper.bind(this)}/>
+          <img src="/static/images/x.png" alt="menu" onClick={this.dropper.bind(this)}/>
         </header>
         <section className="site-body">
           <navbar className="site-navigator">

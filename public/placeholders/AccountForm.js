@@ -54,7 +54,11 @@ export default class AccountForm extends React.Component{
       if(entryType === 'email'){
         self.setState({emailTaken: ''});
       }else{
-        self.setState({usernameTaken: ''});
+        if(self.state.userCreate.length < 6 && self.state.userCreate.length !== 0){
+          self.setState({usernameTaken: 'Username too short.'});
+        }else{
+          self.setState({usernameTaken: ''});
+        }
       }
     }
   }
@@ -68,11 +72,21 @@ export default class AccountForm extends React.Component{
   updateNewPass(e){
     let password = e.target.value;
     this.setState({passCreate: password});
+    if(password.length < 6 && password.length !== 0){
+      this.setState({passwordPrompt: 'Password too short.'});
+    }else{
+      this.setState({passwordPrompt: ''});
+    }
   }
 
   confirmPass(e){
     let confirm = e.target.value;
     this.setState({confirmCreate: confirm});
+    if(confirm !== this.state.passCreate && confirm.length !== 0){
+      this.setState({confirmPrompt: 'Passwords do not match.'});
+    }else{
+      this.setState({confirmPrompt: ''});
+    }
   }
 
   updateNewEmail(e){
@@ -92,7 +106,23 @@ export default class AccountForm extends React.Component{
   }
 
   createUser(){
-    alert('No functionality yet!');
+    let username = this.state.userCreate,
+        password = this.state.passCreate,
+        email = this.state.emailCreate;
+    if(this.state.usernameTaken == '' && this.state.emailTaken == '' && this.state.passwordPrompt == '' && this.state.confirmPrompt == ''){
+      if(this.state.userCreate.length > 0 && this.state.emailCreate.length > 0 && this.state.passCreate.length > 0 && this.state.confirmCreate.length > 0){
+        $.ajax({
+          type: 'POST',
+          url: '/submitNewUser',
+          data: {username, password, email},
+          success: function(data){}
+        });
+      }else{
+        alert('Missing a required field!');
+      }
+    }else{
+      alert('One or more field(s) invalid!');
+    }
   }
 
   loginUser(){
@@ -124,6 +154,9 @@ export default class AccountForm extends React.Component{
             <button>Submit</button>
           </form>
         </div>
+        <script>
+          e.preventDefault();
+        </script>
       </div>
     );
   }

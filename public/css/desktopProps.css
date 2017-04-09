@@ -1,0 +1,29 @@
+.welcome-website{
+  width: 100%;
+  border: none;
+  background: white;
+}
+
+.welcome-website h1{
+  border: none;
+  background: white;
+  font-size: 50px;
+  display: inline-block;
+}
+
+.site-frame{
+  background: #337;
+  color: white;
+}
+
+.site-frame h2{
+  font-size: 24px;
+}
+
+.site-frame a{
+  color: yellow;
+}
+
+.site-body{
+  padding: 0;
+}
